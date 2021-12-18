@@ -40,7 +40,9 @@ def align_crabs_2():
     #  reach each of these positions, which is the sum for the fuel needed at each
     #  step (which in itself always increases by 1) for abs(entry - x) steps
     for x in range(xmin, xmax + 1):
-        fuel_spent = sum([sum(range(1, abs(entry - x) + 1)) for entry in data])
+        # fuel_spent = sum([sum(range(1, abs(entry - x) + 1)) for entry in data])
+        # with closed form expression
+        fuel_spent = sum([abs(entry - x) * (abs(entry - x) + 1) / 2 for entry in data])
         min_fuel_spent = min(fuel_spent, min_fuel_spent)
     print(f'xmin: {xmin}')
     print(f'xmax: {xmax}')
