@@ -25,32 +25,20 @@ def test_unique_length(entry):
 # Puzzle 2
 def deduce_numbers(sequence):
     one = set(list(filter(lambda x: len(x) == 2, sequence))[0])
-    #print(f'one: {one}')
     seven =  set(list(filter(lambda x: len(x) == 3, sequence))[0])
-    #print(f'seven: {seven}')
     four =  set(list(filter(lambda x: len(x) == 4, sequence))[0])
-    #print(f'four: {four}')
     eight =  set(list(filter(lambda x: len(x) == 7, sequence))[0])
-    #print(f'eight: {eight}')
     five_segments = list(filter(lambda x: len(x)==5, sequence))
     three = set(list(filter(lambda x: one.issubset(x), five_segments))[0])
-    #print(f'three: {three}')
     six_segments = list(filter(lambda x: len(x)==6, sequence))
     nine = set(list(filter(lambda x: three.issubset(x), six_segments))[0])
-    #print(f'nine: {nine}')
     leftup = nine.difference(three)
-    #print(f'leftup: {leftup}')
     middle = (four.difference(one)).difference(leftup)
-    #print(f'middle: {middle}')
     zero = eight.difference(middle)
-    #print(f'zero: {zero}')
     remaining = list(filter(lambda x: set(x) != one and set(x) != seven and set(x) != four and set(x) != eight and set(x) != three and set(x) != nine and set(x) != zero, sequence))
     six = set(list(filter(lambda x: len(x) == 6, remaining))[0])
-    #print(f'six: {six}')
     five = set(list(filter(lambda x: len(x) == 5 and leftup.issubset(x), remaining))[0])
-    #print(f'five: {five}')
     two = set(list(filter(lambda x: len(x) == 5 and not leftup.issubset(x), remaining))[0])
-    #print(f'two: {two}')
 
     numbers = {
         "zero": zero,

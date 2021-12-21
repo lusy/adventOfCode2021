@@ -86,11 +86,9 @@ def compute_biggest_basins():
 
 def determine_basin(floor_map, position):
     basin_positions = [position]
-    # print(f'basin_positions: {basin_positions}')
     num_rows = len(floor_map)
     num_columns = len(floor_map[0])
     for p in basin_positions:
-        #print(f'adding neighbours of position {p}')
         if p[0] > 0:
             north_position = [p[0] - 1, p[1]]
             if floor_map[north_position[0], north_position[1]] != '9' and north_position not in basin_positions:
@@ -107,7 +105,6 @@ def determine_basin(floor_map, position):
             east_position = [p[0], p[1] + 1]
             if floor_map[east_position[0], east_position[1]] != '9' and east_position not in basin_positions:
                 basin_positions.append(east_position)
-        #print(f'updated basin positions: {basin_positions}')
 
     return basin_positions
 
