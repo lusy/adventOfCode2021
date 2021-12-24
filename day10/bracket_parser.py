@@ -44,7 +44,6 @@ def compute_scores():
     autocompletion_patterns = [] # For puzzle2
     for line in data:
         parsing_result = parse_line(line)
-        #print(f'parsing result: {parsing_result}')
         # For puzzle1
         if len(parsing_result) == 1:
             syntax_error_score += illegal_characters_penalty[parsing_result]
@@ -76,7 +75,6 @@ def compute_autocompletion_score(autocompletion_patterns):
 
     scores.sort()
     middle_score = scores[len(scores)//2]
-    #print(f'autocompletion scores: {scores}')
     return middle_score
 
 
